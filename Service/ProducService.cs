@@ -1,15 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Productos.Data;
 using Productos.Data.ProductModels;
 
-namespace BackEdn.Services
+namespace Productos.Services
 {
     public class ProductoService
     {
@@ -51,7 +47,7 @@ namespace BackEdn.Services
 
             if (existingProduct == null)
             {
-                return false; 
+                return false;
             }
 
             existingProduct.Name = updatedProduct.Name;
@@ -63,12 +59,11 @@ namespace BackEdn.Services
             try
             {
                 await _context.SaveChangesAsync();
-                return true; 
+                return true;
             }
             catch (DbUpdateException)
             {
-              
-                return false; 
+                return false;
             }
         }
 
@@ -86,11 +81,10 @@ namespace BackEdn.Services
             try
             {
                 await _context.SaveChangesAsync();
-                return true; 
+                return true;
             }
             catch (DbUpdateException)
             {
-               
                 return false;
             }
         }

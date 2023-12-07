@@ -1,15 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Productos.Data;
 using Productos.Data.ProductModels;
 
-namespace BackEdn.Services
+namespace Productos.Services
 {
     public class CategoryService
     {
@@ -44,7 +40,7 @@ namespace BackEdn.Services
 
             if (existingCategory == null)
             {
-                return false; // La categoría no existe, no se puede actualizar.
+                return false; 
             }
 
             existingCategory.Name = updatedCategory.Name;
@@ -52,12 +48,12 @@ namespace BackEdn.Services
             try
             {
                 await _context.SaveChangesAsync();
-                return true; // Actualización exitosa.
+                return true; 
             }
             catch (DbUpdateException)
             {
-                // Manejar excepciones, si es necesario.
-                return false; // Error al actualizar.
+               
+                return false;
             }
         }
 
@@ -67,7 +63,7 @@ namespace BackEdn.Services
 
             if (categoryToDelete == null)
             {
-                return false; // La categoría no existe, no se puede eliminar.
+                return false; 
             }
 
             _context.Categorias.Remove(categoryToDelete);
@@ -75,12 +71,12 @@ namespace BackEdn.Services
             try
             {
                 await _context.SaveChangesAsync();
-                return true; // Eliminación exitosa.
+                return true;
             }
             catch (DbUpdateException)
             {
-                // Manejar excepciones, si es necesario.
-                return false; // Error al eliminar.
+               
+                return false; 
             }
         }
     }
