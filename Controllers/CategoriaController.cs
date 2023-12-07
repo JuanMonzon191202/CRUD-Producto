@@ -1,10 +1,6 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Productos.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Productos.Data.ProductModels;
-
+using Productos.Services;
 
 namespace Productos.Controllers
 {

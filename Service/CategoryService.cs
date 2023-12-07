@@ -1,6 +1,3 @@
-using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Productos.Data;
 using Productos.Data.ProductModels;
@@ -40,7 +37,7 @@ namespace Productos.Services
 
             if (existingCategory == null)
             {
-                return false; 
+                return false;
             }
 
             existingCategory.Name = updatedCategory.Name;
@@ -48,11 +45,10 @@ namespace Productos.Services
             try
             {
                 await _context.SaveChangesAsync();
-                return true; 
+                return true;
             }
             catch (DbUpdateException)
             {
-               
                 return false;
             }
         }
@@ -63,7 +59,7 @@ namespace Productos.Services
 
             if (categoryToDelete == null)
             {
-                return false; 
+                return false;
             }
 
             _context.Categorias.Remove(categoryToDelete);
@@ -75,8 +71,7 @@ namespace Productos.Services
             }
             catch (DbUpdateException)
             {
-               
-                return false; 
+                return false;
             }
         }
     }
